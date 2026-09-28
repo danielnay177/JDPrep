@@ -1567,7 +1567,7 @@ export const connectProfiles: ConnectProfile[] = [
 const applicationInformationPages: Record<string, string> = {
   syracuse: 'https://law.syracuse.edu/admissions/j-d-admissions/apply',
   'st-johns': 'https://www.stjohns.edu/law/admissions/jd-admissions',
-  cuny: 'https://www.law.cuny.edu/admissions-and-aid/',
+  cuny: 'https://www.law.cuny.edu/admissions-and-aid/how-to-apply-degrees-offered/j-d-admissions/',
   cardozo: 'https://cardozo.yu.edu/admissions/jd/application-information',
   yale: 'https://law.yale.edu/admissions/jd-admissions/first-year-applicants/application',
   harvard: 'https://hls.harvard.edu/jdadmissions/apply-to-harvard-law-school/jdapplicants/',

@@ -8,12 +8,12 @@
     "orientation": "portrait",
     "icon": "./assets/images/jdprep-icon.png",
     "scheme": "jdprep",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "backgroundColor": "#071B29",
     "ios": {
       "bundleIdentifier": "com.danielnay177.jdprep",
       "appleTeamId": "229XCUMAFG",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "supportsTablet": true
     },
     "android": {

@@ -1,7 +1,7 @@
-import { router, Stack, useLocalSearchParams, useNavigation } from 'expo-router';
+import { router, Stack, useFocusEffect, useLocalSearchParams, useNavigation } from 'expo-router';
 import * as Application from 'expo-application';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, BackHandler, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Appearance, BackHandler, Pressable, StyleSheet, Text, View } from 'react-native';
 import { WebView, type WebViewNavigation } from 'react-native-webview';
 
 import { Icon } from '@/components/ui';
@@ -30,6 +30,15 @@ export default function BrowserScreen() {
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
   const [canGoBack, setCanGoBack] = useState(false);
+
+  useFocusEffect(useCallback(() => {
+    // WKWebView and Android WebView use the host app's color scheme for
+    // prefers-color-scheme. Expo Go can inherit the device's dark appearance
+    // even when this project is configured for light mode.
+    Appearance.setColorScheme('light');
+
+    return () => Appearance.setColorScheme('unspecified');
+  }, []));
 
   const goBack = useCallback(() => {
     if (canGoBack) {
@@ -110,9 +119,11 @@ export default function BrowserScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: palette.canvas },
-  webview: { flex: 1, backgroundColor: palette.canvas },
-  loading: { position: 'absolute', inset: 0, alignItems: 'center', justifyContent: 'center', backgroundColor: palette.canvas },
+  // External sites may leave parts of the document transparent. Keep the
+  // native WebView fallback white so black site text never sits on our dark app canvas.
+  container: { flex: 1, backgroundColor: '#FFFFFF' },
+  webview: { flex: 1, backgroundColor: '#FFFFFF' },
+  loading: { position: 'absolute', inset: 0, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF' },
   progress: { position: 'absolute', left: 0, right: 0, top: 0, height: 3, backgroundColor: palette.mintSoft },
   progressBar: { width: '58%', height: 3, borderRadius: 2, backgroundColor: palette.green },
   errorBanner: { position: 'absolute', left: 14, right: 14, bottom: 14, padding: 12, borderRadius: 12, backgroundColor: palette.deep },

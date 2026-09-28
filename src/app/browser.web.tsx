@@ -31,14 +31,14 @@ export default function BrowserScreen() {
         allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen',
         allowFullScreen: true,
         referrerPolicy: 'strict-origin-when-cross-origin',
-        style: { width: '100%', height: '100%', border: 0, backgroundColor: palette.canvas },
+        style: { width: '100%', height: '100%', border: 0, backgroundColor: '#FFFFFF', colorScheme: 'light' },
       })}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: palette.canvas },
+  container: { flex: 1, backgroundColor: '#FFFFFF' },
   message: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 28, backgroundColor: palette.canvas },
   title: { color: palette.ink, fontSize: 20, fontWeight: '800', textAlign: 'center' },
   body: { color: palette.inkMuted, fontSize: 14, lineHeight: 20, textAlign: 'center', marginTop: 8 },

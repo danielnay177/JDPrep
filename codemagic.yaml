@@ -26,7 +26,9 @@ workflows:
           cd ios
           pod install
       - name: Apply App Store provisioning profile
-        script: xcode-project use-profiles
+        script: |
+          xcode-project use-profiles \
+            --custom-export-options='{"testFlightInternalTestingOnly": true}'
       - name: Build signed IPA
         script: |
           xcode-project build-ipa \
@@ -40,4 +42,6 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_testflight: true
+        beta_groups:
+          - JDPrep Internal
         submit_to_app_store: false
