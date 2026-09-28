@@ -1,56 +1,39 @@
-# Welcome to your Expo app 👋
+# JDPrep
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile-first Expo SDK 57 app for people preparing and applying to ABA-approved JD programs in the United States.
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Run locally
 
 ```bash
-npm run reset-project
+npm ci
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Sign in
 
-### Other setup steps
+JDPrep uses Firebase Authentication for guest (anonymous) access and email/password accounts. Auth sessions persist between launches on iOS and Android. Firebase's client configuration is in `src/lib/firebase.ts`; it is a public client identifier, not a server credential. Protect your Firebase data with Security Rules before adding database access.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Enable the **Anonymous** and **Email/Password** providers in Firebase Authentication for project `jdprep-14213` before running sign-in flows.
 
-## Learn more
+## TestFlight builds
 
-To learn more about developing your project with Expo, look at the following resources:
+The iOS bundle ID is `com.danielnay177.jdprep`. Codemagic reads `codemagic.yaml`, generates the iOS project from Expo config, signs the IPA, and submits it to TestFlight. Connect the GitHub repository in Codemagic and add an App Store Connect API key integration named `JDPrep App Store Connect` with App Manager access before the first build.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npx expo lint
+npx tsc --noEmit
+```
 
-## Join the community
+Use `i` for the iOS simulator, `a` for Android, or `w` for web.
 
-Join our community of developers creating universal apps.
+## Product areas
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Home: daily planning, admissions tips, and law-school updates
+- Prepare: application materials and progress
+- Schools: searchable, filterable program directory
+- Events: official admissions events and registration links
+- Support: admissions teams, faculty, students, and alumni
+
+The current content is local sample data in `src/data/content.ts`, intentionally isolated so it can later be replaced with Firebase collections and live school feeds.
+
+> This prototype is not affiliated with the American Bar Association. Verify all admissions requirements, statistics, and deadlines using current official sources.
