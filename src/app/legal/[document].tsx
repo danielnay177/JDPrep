@@ -7,7 +7,7 @@ const privacySections = [
   ['Information used by JDPrep', 'JDPrep uses Firebase Authentication to create and maintain your sign-in. If you use email sign-in, Firebase processes your email address and authentication credentials. Guest sign-in uses an anonymous Firebase user identifier. If you add a display name, it is saved to your Firebase Authentication profile. JDPrep does not receive or store your password.'],
   ['How information is used', 'Authentication information is used to sign you in, keep your session active, and provide account actions such as profile editing and account deletion. The current app does not use Firestore or another JDPrep cloud database for your planning data.'],
   ['Service providers and retention', 'Firebase is provided by Google and processes authentication data under Google’s terms and privacy practices. Account information is retained while your Firebase account exists. You can request deletion from the Profile screen; account deletion may require a recent sign-in.'],
-  ['Your choices and contact', 'You may use guest sign-in or email sign-in. You may delete your account from Profile. For privacy questions, contact the JDPrep app developer through the support contact listed on the app’s App Store Connect page.'],
+  ['Your choices and contact', 'You may use guest sign-in or email sign-in. You may delete your account from Profile. For privacy questions about this test release, contact the JDPrep developer through TestFlight feedback.'],
   ['Changes', 'This notice may be updated as JDPrep adds features. The version included with each app release describes the data practices for that release.'],
 ];
 
@@ -16,7 +16,7 @@ const termsSections = [
   ['Educational information', 'JDPrep is for general informational and organizational purposes. It is not legal, admissions, financial, or professional advice, and it does not guarantee admission or any outcome. Admissions policies, deadlines, requirements, and school information can change. Confirm details with the relevant school or official source.'],
   ['Accounts', 'You may sign in anonymously or create an account with email and password. You can edit your display name or request account deletion in Profile. You are responsible for providing accurate account information and using the service lawfully.'],
   ['Availability and changes', 'JDPrep is provided as available. Features, content, or availability may change as the app develops. We may suspend access when needed to protect the service or users.'],
-  ['Contact', 'For questions about these terms, contact the JDPrep app developer through the support contact listed on the app’s App Store Connect page.'],
+  ['Contact', 'For questions about these terms, contact the JDPrep developer through TestFlight feedback.'],
 ];
 
 export default function LegalDocumentScreen() {
