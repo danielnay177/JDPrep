@@ -59,6 +59,7 @@ function AppShell() {
         <Stack.Screen name="resources/[id]" options={{ title: '', headerTransparent: true, headerBlurEffect: 'systemChromeMaterial' }} />
         <Stack.Screen name="browser" options={({ route }) => ({ title: typeof route.params === 'object' && route.params && 'title' in route.params && typeof route.params.title === 'string' ? route.params.title : 'Web page' })} />
         <Stack.Screen name="profile" options={{ title: 'Your profile', presentation: 'modal', headerTransparent: true, headerBlurEffect: 'systemChromeMaterial' }} />
+        <Stack.Screen name="legal/[document]" options={{ title: 'Legal information', headerTransparent: true, headerBlurEffect: 'systemChromeMaterial' }} />
       </Stack>}
       {showLaunch && isReady ? (
         <Animated.View pointerEvents="none" style={[styles.launch, { opacity: fade }]}>

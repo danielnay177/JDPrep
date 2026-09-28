@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   User,
+  deleteUser,
+  updateProfile,
 } from 'firebase/auth';
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 
@@ -17,6 +19,8 @@ type AuthContextValue = {
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string) => Promise<void>;
   logOut: () => Promise<void>;
+  updateDisplayName: (displayName: string) => Promise<void>;
+  deleteAccount: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -37,6 +41,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signIn: async (email, password) => { await signInWithEmailAndPassword(auth, email.trim(), password); },
     signUp: async (email, password) => { await createUserWithEmailAndPassword(auth, email.trim(), password); },
     logOut: async () => { await signOut(auth); },
+    updateDisplayName: async (displayName) => {
+      if (!auth.currentUser) throw new Error('No signed-in account');
+      await updateProfile(auth.currentUser, { displayName: displayName.trim() });
+      setUser(auth.currentUser);
+    },
+    deleteAccount: async () => {
+      if (!auth.currentUser) throw new Error('No signed-in account');
+      await deleteUser(auth.currentUser);
+    },
   }), [user, isReady]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
